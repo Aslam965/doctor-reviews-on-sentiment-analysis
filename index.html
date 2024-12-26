@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Review Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #232526, #414345);
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            width: 90%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #f9a825;
+        }
+        form {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid #4caf50;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #2c2c2c;
+            color: #e0e0e0;
+            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5);
+            outline: none;
+            resize: none;
+        }
+        textarea::placeholder {
+            color: #888888;
+        }
+        button {
+            background: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        h2 {
+            margin-top: 30px;
+            font-size: 1.8em;
+            color: #4caf50;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            textarea {
+                height: 120px;
+            }
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Doctor Review Sentiment Analysis</h1>
+        <form action="/predict" method="post">
+            <label for="review_text">Enter a doctor review:</label><br><br>
+            <textarea id="review_text" name="review_text" placeholder="Write your review here..."></textarea><br><br>
+            <button type="submit">Predict Sentiment</button>
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
